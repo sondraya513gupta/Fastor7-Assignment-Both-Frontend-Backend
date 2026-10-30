@@ -1,0 +1,27 @@
+# Environment variables
+.env
+
+# Node modules
+node_modules/
+
+# Prisma generated files
+prisma/migrations/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Coverage
+coverage/
+
+# Build
+dist/

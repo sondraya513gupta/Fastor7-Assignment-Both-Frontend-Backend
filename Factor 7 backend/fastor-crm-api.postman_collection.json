@@ -1,0 +1,206 @@
+{
+  "info": {
+    "name": "Fastor CRM API",
+    "_postman_id": "fastor-crm-backend-v1",
+    "description": "Complete API collection for the Fastor CRM Backend - Educational Company CRM System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "enquiryId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        },
+        "description": "Check if the API server is running"
+      }
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register Employee",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "  const response = pm.response.json();",
+                  "  pm.collectionVariables.set('token', response.data.token);",
+                  "  console.log('Token saved:', response.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"StrongPassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            },
+            "description": "Register a new employee account. Returns JWT token on success."
+          }
+        },
+        {
+          "name": "Login Employee",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const response = pm.response.json();",
+                  "  pm.collectionVariables.set('token', response.data.token);",
+                  "  console.log('Token saved:', response.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"StrongPassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            },
+            "description": "Login with existing employee credentials. Auto-saves token to collection variable."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Enquiries",
+      "item": [
+        {
+          "name": "Submit Public Enquiry (No Auth)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "  const response = pm.response.json();",
+                  "  pm.collectionVariables.set('enquiryId', response.data.id);",
+                  "  console.log('Enquiry ID saved:', response.data.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jane Smith\",\n  \"email\": \"jane@student.com\",\n  \"courseInterest\": \"Full Stack Development\",\n  \"phone\": \"9876543210\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/enquiries/public",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "enquiries", "public"]
+            },
+            "description": "Submit a new public enquiry. Does NOT require authentication. Rate limited to 10/hour per IP."
+          }
+        },
+        {
+          "name": "Get Public Enquiries (Auth Required)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/enquiries/public?page=1&limit=10&sortOrder=desc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "enquiries", "public"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" },
+                { "key": "sortOrder", "value": "desc" }
+              ]
+            },
+            "description": "Fetch all unclaimed PUBLIC enquiries. Requires JWT Bearer token. Supports pagination."
+          }
+        },
+        {
+          "name": "Claim Enquiry",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/enquiries/{{enquiryId}}/claim",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "enquiries", "{{enquiryId}}", "claim"]
+            },
+            "description": "Claim a specific public enquiry. Atomic operation — prevents double-claiming. Returns 409 if already claimed."
+          }
+        },
+        {
+          "name": "Get My Private Enquiries",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/enquiries/my?page=1&limit=10&sortOrder=desc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "enquiries", "my"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" },
+                { "key": "sortOrder", "value": "desc" }
+              ]
+            },
+            "description": "Fetch only enquiries claimed by the currently authenticated employee. Other employees' enquiries are never returned."
+          }
+        }
+      ]
+    }
+  ]
+}

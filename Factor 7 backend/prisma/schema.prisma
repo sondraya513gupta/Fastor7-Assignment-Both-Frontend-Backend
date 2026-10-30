@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum EnquiryStatus {
+  PUBLIC
+  CLAIMED
+}
+
+model Employee {
+  id        String    @id @default(uuid())
+  name      String
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  enquiries Enquiry[]
+
+  @@index([email])
+  @@map("employees")
+}
+
+model Enquiry {
+  id             String        @id @default(uuid())
+  name           String
+  email          String
+  courseInterest String
+  phone          String?
+  status         EnquiryStatus @default(PUBLIC)
+  claimedById    String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  claimedBy Employee? @relation(fields: [claimedById], references: [id], onDelete: SetNull)
+
+  @@index([status])
+  @@index([claimedById])
+  @@index([status, claimedById])
+  @@map("enquiries")
+}
