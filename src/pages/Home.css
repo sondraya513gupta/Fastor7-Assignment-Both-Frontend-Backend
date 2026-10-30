@@ -1,0 +1,649 @@
+.home-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  flex: 1;
+  background: #FFFFFF;
+  padding-bottom: 30px;
+}
+
+.home-toast {
+  position: sticky;
+  top: 10px;
+  align-self: center;
+  background: #1F2937;
+  color: #FFFFFF;
+  font-family: 'Mulish', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  animation: slideDown 200ms ease;
+}
+
+/* Header Section: Current Locations */
+.home-header {
+  padding: 10px 20px 8px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.location-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.location-label {
+  font-family: 'Mulish', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #858992;
+  margin-bottom: 2px;
+}
+
+.location-name {
+  font-family: 'Mulish', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1E2022;
+}
+
+/* Search / User Box + Two Action Icons (Phone & Wallet) */
+.search-section {
+  padding: 6px 20px 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar-wrapper {
+  flex: 1;
+  height: 46px;
+  background: #F7F8FA;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border: 1px solid #ECEEF2;
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-family: 'Mulish', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #585D69;
+}
+
+.header-action-icon-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 100ms ease;
+}
+
+.header-action-icon-btn:active {
+  transform: scale(0.95);
+}
+
+.header-action-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* Section Title */
+.section-title {
+  font-family: 'Mulish', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #292E39;
+  margin-bottom: 12px;
+}
+
+/* Best Seller Section matching Figma */
+.best-seller-section {
+  padding: 0 20px;
+  margin-top: 6px;
+}
+
+.best-seller-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.best-seller-card {
+  width: 74px;
+  height: 96px;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 150ms ease;
+}
+
+.best-seller-card:active {
+  transform: scale(0.97);
+}
+
+.card-food-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.card-price-badge {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: #E95322;
+  color: #FFFFFF;
+  font-family: 'Mulish', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 4px;
+  line-height: 1.2;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Promo Banner: 323px x 141px matching Figma specs */
+.promo-banner-section {
+  padding: 0 20px;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.promo-banner {
+  width: 100%;
+  max-width: 323px;
+  height: 141px;
+  background: #E95322;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  box-shadow: 0px 4px 4px #D7D7D7;
+  cursor: pointer;
+}
+
+/* Decorative curved yellow accents */
+.decorative-arc {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.arc-top {
+  top: -14px;
+  left: 110px;
+  width: 44px;
+  height: 44px;
+  border: 8px solid #F5B041;
+}
+
+.arc-bottom {
+  bottom: -18px;
+  left: -12px;
+  width: 54px;
+  height: 54px;
+  border: 10px solid #F5B041;
+}
+
+.promo-left-content {
+  flex: 1;
+  padding: 22px 8px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+
+.promo-tagline {
+  font-family: 'Mulish', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.promo-discount-text {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #F8F8F8;
+  line-height: 1;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.promo-right-image {
+  width: 140px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.promo-pizza-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0 18px 18px 0;
+}
+
+/* 5 Carousel Indicators */
+.promo-dots-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 20px;
+  height: 4px;
+  border-radius: 4px;
+  background: #E8D5B5;
+  transition: background 150ms ease;
+}
+
+.dot-active {
+  width: 24px;
+  background: #E95322;
+}
+
+/* Popular Items Section */
+.popular-items-section {
+  padding: 0 20px;
+  margin-top: 20px;
+}
+
+.popular-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.popular-item-card {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.popular-item-image {
+  width: 68px;
+  height: 68px;
+  border-radius: 14px;
+  object-fit: cover;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.popular-item-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.popular-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.popular-item-name {
+  font-family: 'Mulish', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1E2022;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popular-item-price {
+  font-family: 'Mulish', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #E95322;
+  flex-shrink: 0;
+}
+
+.popular-item-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Mulish', sans-serif;
+  font-size: 12px;
+  color: #858992;
+  margin-bottom: 8px;
+}
+
+.popular-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-cancel-order {
+  background: #E95322;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 14px;
+  font-family: 'Mulish', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: opacity 150ms ease;
+}
+
+.btn-cancel-order:active {
+  opacity: 0.85;
+}
+
+.btn-track-driver {
+  background: #FFE6DD;
+  color: #E95322;
+  border: none;
+  border-radius: 14px;
+  font-family: 'Mulish', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: opacity 150ms ease;
+}
+
+.btn-track-driver:active {
+  opacity: 0.85;
+}
+
+.empty-orders-card {
+  padding: 24px;
+  text-align: center;
+  color: #858992;
+  font-size: 14px;
+}
+
+/* Live Fastor API section */
+.live-restaurants-section {
+  padding: 0 20px;
+  margin-top: 24px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.api-badge-indicator {
+  font-size: 11px;
+  color: #10B981;
+  font-weight: 600;
+}
+
+.refresh-api-btn {
+  background: #F3F4F6;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #4B5563;
+}
+
+.spinning {
+  animation: spin 0.8s linear infinite;
+}
+
+.restaurants-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.restaurant-api-card {
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+  background: #F9FAFB;
+  border-radius: 12px;
+  border: 1px solid #ECEEF2;
+  cursor: pointer;
+}
+
+.restaurant-logo-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.restaurant-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.restaurant-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.restaurant-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.restaurant-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1E2022;
+}
+
+.restaurant-status-tag {
+  font-size: 10px;
+  background: #ECFDF5;
+  color: #059669;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.restaurant-address {
+  font-size: 11px;
+  color: #858992;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 2px 0 4px 0;
+}
+
+.restaurant-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #6B7280;
+}
+
+.delivery-time {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.delivery-fee {
+  color: #10B981;
+  font-weight: 600;
+}
+
+/* Tracking Modal */
+.tracking-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.tracking-modal {
+  width: 100%;
+  max-width: 375px;
+  background: #FFFFFF;
+  border-radius: 24px 24px 0 0;
+  padding: 16px 20px 24px 20px;
+  animation: slideUp 250ms ease-out;
+}
+
+.modal-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.modal-drag-handle {
+  width: 36px;
+  height: 4px;
+  background: #E5E7EB;
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+.close-modal-btn {
+  background: #F3F4F6;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.driver-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.driver-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #FFF0EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.driver-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1E2022;
+}
+
+.driver-order {
+  font-size: 12px;
+  color: #858992;
+}
+
+.driver-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.timeline-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #E5E7EB;
+}
+
+.timeline-step.done .timeline-dot {
+  background: #10B981;
+}
+
+.timeline-step.active .timeline-dot {
+  background: #FF5701;
+  box-shadow: 0 0 0 4px rgba(255, 87, 1, 0.2);
+}
+
+.timeline-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.step-title {
+  font-size: 13px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.step-time {
+  font-size: 11px;
+  color: #9CA3AF;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

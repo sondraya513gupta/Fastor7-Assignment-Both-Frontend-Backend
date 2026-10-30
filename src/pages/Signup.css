@@ -1,0 +1,209 @@
+.signup-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 100%;
+  background: #FFFFFF;
+}
+
+.signup-top-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nav back button */
+.signup-nav {
+  padding: 12px 20px 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.signup-back-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 150ms ease;
+}
+
+.signup-back-btn:active {
+  opacity: 0.6;
+}
+
+/* Content Area */
+.signup-main-content {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1E232C;
+  margin-top: 24px;
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+}
+
+.signup-subtitle {
+  font-size: 14px;
+  line-height: 1.45;
+  color: #8391A1;
+  margin-bottom: 34px;
+}
+
+/* Alert notifications */
+.signup-alert {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  animation: slideDown 200ms ease;
+}
+
+.alert-error {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #DC2626;
+}
+
+.alert-success {
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  color: #059669;
+}
+
+/* Phone input container matching Figma: 335px x 48px, radius 8px, border #C7C7C7, bg #F5F5F5 */
+.phone-input-box {
+  width: 100%;
+  height: 48px;
+  background: #F5F5F5;
+  border: 1px solid #C7C7C7;
+  border-radius: 8px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: text;
+  box-sizing: border-box;
+}
+
+.phone-prefix {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1E232C;
+  line-height: 1;
+}
+
+.phone-cursor {
+  width: 1.5px;
+  height: 18px;
+  background: #FF5701;
+  margin: 0 12px;
+  animation: cursorBlink 1s ease-in-out infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.phone-placeholder {
+  font-size: 16px;
+  color: #9EA3AE;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.phone-value {
+  font-size: 16px;
+  color: #1E232C;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.phone-native-input-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+
+/* Bottom section */
+.signup-bottom-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-action-area {
+  padding: 0 20px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Get OTP Button matching Figma: 334px x 48px, radius 10px, #FF5701 */
+.get-otp-btn {
+  width: 100%;
+  height: 48px;
+  background: #FF5701;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  transition: opacity 150ms ease, transform 100ms ease;
+}
+
+.get-otp-btn:active {
+  opacity: 0.92;
+  transform: scale(0.99);
+}
+
+.get-otp-btn:disabled {
+  opacity: 0.9;
+  cursor: not-allowed;
+}
+
+/* Terms and Privacy Text - Matching Figma 287x15 single line Mulish */
+.terms-privacy-text {
+  font-family: 'Mulish', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 15px;
+  color: #555B68;
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  letter-spacing: 0;
+}
+
+.terms-privacy-text strong {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 500;
+  color: #292E39;
+}

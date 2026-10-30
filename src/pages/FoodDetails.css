@@ -1,0 +1,248 @@
+.food-details-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  flex: 1;
+  background: #FFFFFF;
+  position: relative;
+}
+
+.details-toast {
+  position: fixed;
+  top: 14px;
+  align-self: center;
+  background: #065F46;
+  color: #FFFFFF;
+  font-family: 'Mulish', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: slideDown 200ms ease;
+}
+
+/* Invisible back hotspot at top-left */
+.details-back-hotspot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.details-inner-container {
+  padding: 10px 24px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Large Hero Image (Matching Figma radius ~28px) */
+.hero-image-wrapper {
+  width: 100%;
+  max-width: 335px;
+  height: 210px;
+  border-radius: 28px;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-food-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 28px;
+}
+
+/* Price & Quantity Stepper Row with framing top & bottom lines */
+.price-stepper-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #FFE4D9;
+  border-bottom: 1px solid #FFE4D9;
+  padding: 12px 0;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.price-amount {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #E95322;
+  line-height: 1;
+}
+
+.stepper-controls {
+  display: flex;
+  align-items: center;
+}
+
+.stepper-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: #E95322;
+  color: #FFFFFF;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 100ms ease;
+}
+
+.stepper-btn:active {
+  transform: scale(0.92);
+}
+
+.stepper-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.stepper-value {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #292E39;
+  margin: 0 14px;
+  min-width: 14px;
+  text-align: center;
+}
+
+/* Product Info Block */
+.product-info-block {
+  margin-bottom: 22px;
+}
+
+/* Title matching Figma subtitulo: League Spartan 500 20px 100% 0% #391713 */
+.product-title {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  color: #391713;
+  margin-bottom: 6px;
+  letter-spacing: 0;
+}
+
+/* Description matching Figma Inspector: League Spartan 300 16px 95% -3% #391713 */
+.product-description {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 95%;
+  letter-spacing: -0.03em;
+  color: #391713;
+  width: 100%;
+  max-width: 323px;
+}
+
+/* Portion Section */
+.portion-section {
+  margin-bottom: 28px;
+}
+
+.portion-heading {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  color: #391713;
+  margin-bottom: 14px;
+}
+
+.portion-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.portion-row {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Portion Option matching Figma Inspector: League Spartan 300 14px 14px 0% #391713 */
+.portion-name {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0;
+  color: #391713;
+  white-space: nowrap;
+}
+
+/* Dotted Leader Line matching Figma */
+.portion-dotted-leader {
+  flex: 1;
+  margin: 0 10px;
+  border-bottom: 1px dotted #F0D5CD;
+  height: 1px;
+  align-self: center;
+}
+
+.portion-price {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 14px;
+  color: #391713;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.portion-radio-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Add to cart Button matching Figma specs: 334px x 48px, radius 10px, #FF5701 */
+.add-to-cart-btn {
+  width: 100%;
+  max-width: 334px;
+  height: 48px;
+  background: #FF5701;
+  color: #FFFFFF;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Mulish', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  transition: opacity 150ms ease, transform 100ms ease;
+}
+
+.add-to-cart-btn:active {
+  opacity: 0.92;
+  transform: scale(0.99);
+}
